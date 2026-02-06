@@ -416,3 +416,54 @@ done
 ```
 
 If an eval script says checkpoint/log is missing, first confirm the corresponding train script completed and the expected output path exists.
+
+## 7. Baseline Results (From Paper)
+
+The following results are transcribed from the experiment tables in the paper source (`5Experiments.tex`) and can be used as reference targets when reproducing runs in this repository.
+
+### 7.1 Offline Training + Session-Level Evaluation
+
+| Method | Depth | Avg. reward | Total reward | Coverage | Click | Long | Like | Comment | Forward | Follow | Hate |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Random | 11.16 | 0.1898 | 2.1170 | 100% | 18.97% | 12.32% | 4.42% | 1.33% | 0.25% | 0.30% | 0.00% |
+| DT | 12.79 | 0.4274 | 5.4660 | 91% | 42.74% | 37.19% | 5.42% | 2.05% | 0.50% | 0.40% | 0.01% |
+| GRU4Rec | 11.52 | 0.2573 | 2.9650 | 84% | 25.73% | 21.79% | 3.32% | 1.27% | 0.34% | 0.39% | &lt;0.01% |
+| SASRec | 12.09 | 0.3351 | 4.0530 | 72% | 33.51% | 26.75% | 5.35% | 1.81% | 0.43% | 0.53% | 0.03% |
+| TIGER | 13.85 | 0.5442 | 7.5370 | 70% | 54.42% | 46.78% | 5.94% | 2.41% | 0.39% | 0.24% | 0.02% |
+| SFT | 14.02 | 0.5642 | 7.9110 | 60% | 56.41% | 49.80% | 5.97% | 2.35% | 0.54% | 0.28% | 0.01% |
+| DPO | 13.99 | 0.5610 | 7.8490 | 58% | 56.10% | 49.49% | 7.09% | 2.67% | 0.59% | 0.45% | 0.05% |
+| S-DPO | 13.64 | 0.5240 | 7.1470 | 60% | 52.39% | 45.52% | 7.82% | 2.65% | 0.73% | 0.48% | &lt;0.01% |
+| SPRec | 14.14 | 0.5753 | 8.1370 | 57% | 57.52% | 51.29% | 6.93% | 2.76% | 0.89% | 0.57% | 0.06% |
+| GRPO | 14.07 | 0.5690 | 8.0060 | 58% | 56.90% | 50.49% | 7.54% | 2.85% | 0.69% | 0.47% | 0.02% |
+| HRPO | 15.33 | 0.6869 | 10.5280 | 56% | 68.69% | 63.04% | 5.23% | 2.28% | 0.57% | 0.25% | 0.03% |
+
+### 7.2 Offline Training + One-Step Evaluation (Depth = 1)
+
+| Method | Depth | Avg. reward | Total reward | Coverage | Click | Long | Like | Comment | Forward | Follow | Hate |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Random | 1.0 | 0.2130 | 0.2130 | 100% | 21.30% | 13.00% | 2.90% | 1.20% | 0.40% | 0.30% | 0.00% |
+| SFT | 1.0 | 0.4510 | 0.4510 | 28% | 45.10% | 34.20% | 3.10% | 0.70% | 0.40% | 0.30% | 0.00% |
+| S-DPO | 1.0 | 0.4600 | 0.4600 | 23% | 46.00% | 36.80% | 3.40% | 0.70% | 0.40% | 0.30% | 0.00% |
+| SPRec | 1.0 | 0.4570 | 0.4570 | 21% | 45.70% | 35.30% | 3.70% | 0.80% | 0.40% | 0.30% | 0.00% |
+| GRPO | 1.0 | 0.4620 | 0.4620 | 23% | 46.20% | 36.90% | 3.60% | 0.80% | 0.50% | 0.30% | 0.00% |
+| HRPO | 1.0 | 0.5480 | 0.5480 | 15% | 54.80% | 44.70% | 3.10% | 0.60% | 0.30% | 0.30% | 0.00% |
+
+### 7.3 Simulator-Interactive Training + Session-Level Evaluation
+
+| Method | Depth | Avg. reward | Total reward | Coverage | Click | Long | Like | Comment | Forward | Follow | Hate |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Random | 11.16 | 0.1898 | 2.1170 | 100% | 18.97% | 12.32% | 4.42% | 1.33% | 0.25% | 0.30% | 0.00% |
+| TD3 | 13.52 | 0.5128 | 6.9330 | 10% | 51.27% | 45.41% | 3.35% | 0.94% | 0.19% | 0.19% | 0.02% |
+| A2C | 12.19 | 0.3468 | 4.2270 | 50% | 34.68% | 27.60% | 5.25% | 1.14% | 0.31% | 0.20% | 0.02% |
+| DDPG | 13.71 | 0.5359 | 7.3470 | 3% | 53.59% | 48.98% | 4.97% | 1.54% | 0.48% | 0.21% | 0.01% |
+| HAC | 13.97 | 0.5604 | 7.8270 | 3% | 56.04% | 50.84% | 5.13% | 2.24% | 0.50% | 0.42% | 0.04% |
+| DT | 13.98 | 0.5624 | 7.8630 | 12% | 56.24% | 50.17% | 6.54% | 1.80% | 0.43% | 0.26% | &lt;0.01% |
+| HRPO | 15.50 | 0.6931 | 10.7460 | 57% | 69.31% | 63.79% | 5.72% | 2.31% | 0.55% | 0.27% | 0.03% |
+
+### 7.4 Sensitivity / Training Figures
+
+| Group Size (W) | KL Coefficient | PPO Clip | Smoothing Alpha |
+|---|---|---|---|
+| ![Group size sensitivity](docs/figures/groupsize.png) | ![KL sensitivity](docs/figures/kl.png) | ![Clip sensitivity](docs/figures/clip.png) | ![Smoothing sensitivity](docs/figures/smooth.png) |
+
+![Training reward curve](docs/figures/train_reward.png)

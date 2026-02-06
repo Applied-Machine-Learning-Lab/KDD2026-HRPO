@@ -465,5 +465,3 @@ The following results are transcribed from the experiment tables in the paper so
 | Group Size (W) | KL Coefficient | PPO Clip | Smoothing Alpha |
 |---|---|---|---|
 | ![Group size sensitivity](docs/figures/groupsize.png) | ![KL sensitivity](docs/figures/kl.png) | ![Clip sensitivity](docs/figures/clip.png) | ![Smoothing sensitivity](docs/figures/smooth.png) |
-
-![Training reward curve](docs/figures/train_reward.png)

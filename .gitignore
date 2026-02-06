@@ -1,0 +1,14 @@
+.DS_Store
+.idea/
+**/__pycache__/
+**/.ipynb_checkpoints/
+.csv
+.checkpoint
+.log
+*.pyc
+*.pt
+*.out
+code/output/
+code/dataset/
+code/checkpoints/
+dataset/

@@ -33,6 +33,18 @@ export MPLCONFIGDIR=/tmp/matplotlib
 
 ## 2. Data And Path Setup
 
+### Data provenance and preprocessing
+
+The KuaiRand-Pure data used by this repository follows the processed data format released with the KuaiSim framework: [Applied-Machine-Learning-Lab/KuaiSim `dataset/kuairand/kuairand-Pure/data`](https://github.com/Applied-Machine-Learning-Lab/KuaiSim/tree/main/dataset/kuairand/kuairand-Pure/data). In other words, the raw source is KuaiRand, and the CSV files here are used under the same KuaiSim data convention.
+
+The concrete preprocessing code in this repository is `code/preprocess/KuaiRandDataset.ipynb` (see the preprocessing cells near the bottom). It takes the KuaiSim-format KuaiRand-Pure files such as `log_standard_4_08_to_4_21_pure.csv`, `log_standard_4_22_to_5_08_pure.csv`, `user_features_pure.csv`, and `video_features_basic_pure.csv`, then builds the sessionized log and filled feature files expected by the training scripts:
+
+- `log_session_4_08_to_5_08_Pure.csv`: user-day sessions with `session` and `position` fields.
+- `user_features_Pure_fillna.csv`: user features with missing values filled.
+- `video_features_basic_Pure_fillna.csv`: video basic features with missing values filled.
+
+Downstream HRPO-specific processing is performed by `code/build_hrpo_table.py`, which is called by `code/build_hrpo_table.sh` to build cohort-conditioned prefix-utility tables from the KuaiSim-format session log.
+
 Run all commands from repository root:
 
 ```bash
